@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+.gray-font {
+    color: rgba(19, 19, 19, 0.7);
+
+font-family: Lato;
+font-weight: 400;
+letter-spacing: 0%;
+text-align: center;
+}
+.btn-bg{
+    
+background: rgba(14, 122, 129, 1);
+}
+.Lato{
+    font-family: Lato;
+}
+footer p {
+    color: rgb(170, 170, 170);
+}
