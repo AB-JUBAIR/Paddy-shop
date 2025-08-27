@@ -12,7 +12,7 @@
 </head>
 
 <body>
-     <header>
+    <header>
         <nav class="mx-[140px] py-[50px] flex justify-between border-b">
             <div class=" w-10 h-auto flex flex-row gap-2 items-center">
                 <img class="h-[24px]" src="/images/logo.webp" alt="">
@@ -30,29 +30,38 @@
     </header>
 
     <!-- this is main section -->
-    <main class="mx-[140px]">
+    <main class="max-h-11/12">
 
         <section class="w-auto px-72 flex flex-col  text-center">
-           <div class="">
-             <h4 class="gray-font text-xl">Bringing Families Together
-            </h4>
-            <h1 class="text-5xl font-bold m-5">
-                Your Path to Adoption Starts Here</h1>
-            <p class="gray-font">It is a long established fact that a reader will be distracted by the readable content of a page when
-                looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-            <button class="btn btn-bg text-white m-5"> View More</button></div>
+            <div class="">
+                <h4 class="gray-font text-xl">Bringing Families Together
+                </h4>
+                <h1 class="text-5xl font-bold m-5">
+                    Your Path to Adoption Starts Here</h1>
+                <p class="gray-font">It is a long established fact that a reader will be distracted by the readable
+                    content of a page when
+                    looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <button class="btn btn-bg text-white m-5"> View More</button>
+            </div>
             <img src="/images/pet.webp" alt="">
-            <h1 class="font-black text-3xl my-5">Adopt  Your  Best Friend</h1>
-            <P class="gray-font">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</P>
+            <h1 class="font-black text-3xl my-5">Adopt Your Best Friend</h1>
+            <P class="gray-font">It is a long established fact that a reader will be distracted by the readable content
+                of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</P>
 
         </section>
 
         <!-- api section -->
-         <section>
-            <div id="categoriesBtn">
+        <section>
+            <div id="categoriesBtn" class="flex flex-row gap-5 justify-center my-8"> </div>
+           <div class="flex gap-3">
+             <div id="PetsDisplay" class=" grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+             <div class="w-1/4 border-2 rounded-xl ">
 
+             </div>
+           </div>
+               
             </div>
-         </section>
+        </section>
 
     </main>
 
@@ -61,44 +70,59 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- this is footer section  -->
-    <footer class="h-[450px] px-[140px] bg-black text-white Lato py-[100px] flex  justify-between">
+    <footer class="h-1/12 px-[140px] bg-black text-white Lato py-24 grid gap-3 justify-betweenn lg:grid-cols-3">
 
 
-<div> <div class=" flex flex-row gap-2 w-8 pb-8"><img src="images/logo.webp" alt=""><h1 class="font-bold text-2xl">Peddy</h1></div>
+        <div>
+            <div class=" flex flex-row gap-2 w-8 pb-8"><img src="images/logo.webp" alt="">
+                <h1 class="font-bold text-2xl">Peddy</h1>
+            </div>
 
-<p>Location: av. Washington 165, NY CA 54003
-</p>
-<p>Phone: +31 85 964 47 25
-</p>
-<p>Email: info@yourdomain.com
-</p>
-<p>Openings hours: 9.00 AM - 5.00 PM</p>
+            <p>Location: av. Washington 165, NY CA 54003
+            </p>
+            <p>Phone: +31 85 964 47 25
+            </p>
+            <p>Email: info@yourdomain.com
+            </p>
+            <p>Openings hours: 9.00 AM - 5.00 PM</p>
 
-</div>
-<div class="list-none text-gray-400">
-    <h2 class="font-bold mb-8 text-white">Useful Link</h2>
-    <li>Home</li>
-    <li>About Us</li>
-    <li>Animals</li>
-    <li>Foundation</li>
-    <li>Contact</li>
-</div>
-<div>
-    <h2 class="font-bold mb-8">Drop a Message</h2>
-<div class="flex flex-col">  
-      <input type="email" class="h-10 px-4 bg-gray-800 rounded-[8px]" id="" placeholder="Enter Your Email">
-    <button class="btn border-none mt-4 text-amber-50 text-xl btn-bg">Subcribe</button>
-</div>
-</div>
+        </div>
+        <div class="list-none text-gray-400">
+            <h2 class="font-bold mb-8 text-white">Useful Link</h2>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Animals</li>
+            <li>Foundation</li>
+            <li>Contact</li>
+        </div>
+        <div>
+            <h2 class="font-bold mb-8">Drop a Message</h2>
+            <div class="flex flex-col">
+                <input type="email" class="h-10 px-4 bg-gray-800 rounded-[8px]" id="" placeholder="Enter Your Email">
+                <button class="btn border-none mt-4 text-amber-50 text-xl btn-bg">Subcribe</button>
+            </div>
+        </div>
 
     </footer>
+    <script>
 
-
-<script> 
-    console.log("jubair");
-    
-</script>
+    </script>
     <script src="script.js"></script>
 </body>
 
