@@ -29,7 +29,9 @@ const loadPatDetails = async () => {
 //  pets API by Pets (dog , bird, cat)
 const petsCategories = async (category) => {
   try {
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/category/${category}`
+    );
     const data = await res.json();
     displayPetDetais(data.data);
   } catch (error) {
@@ -41,6 +43,20 @@ const petsCategories = async (category) => {
 const btnclick = (id) => {
   petsCategories(id);
 };
+/**
+ * 
+ * {
+    "petId": 3,
+    "category": "Rabbit",
+    "date_of_birth": "2022-04-20",
+    "price": 1500,
+    "image": "https://i.ibb.co.com/s3PXSwD/pet-3.jpg",
+    "gender": "Male",
+    "pet_details": "This male African Grey rabbit is a small, friendly companion born on April 20, 2022. He prefers a calm environment and enjoys gentle handling. Partially vaccinated, he's a great choice for rabbit lovers who want a peaceful, easygoing pet. Priced at $1500, he's perfect for a quiet home environment.",
+    "vaccinated_status": "Partially",
+    "pet_name": "Coco"
+} 
+ */
 
 // display categories
 const displayCategories = (data) => {
@@ -52,34 +68,76 @@ const displayCategories = (data) => {
   });
 };
 // for click detail button
- const pet = (data) =>{
-  
-const petcontainer = document.getElementById('modalcontainar')
-const div = document.createElement("div")
-div.innerHTML = `
+const pet = (data) => {
+  const petcontainer = document.getElementById("modalcontainar");
+  const div = document.createElement("div");
+  div.innerHTML = `
 <img class = "w-3xl object-center p-2 border-2 rounded-2xl" src="${data.image}" alt="">
-<button> clse </button>
 
+<div>
+    
+  <div class="gray-font">
+           <h2 class="card-title py-2 pl-2 font-bold text-black">${data.pet_name}</h2>
+      <div class="gray-font flex flex-1/2 gap-5">
+             <div>
+                   <div class="flex items-center gap-1"><img class="h-5"src="https://img.icons8.com/dotty/80/hachiko.png" alt="hachiko" />
+                   <p class="text-start ">Breed: ${data.category}</p> </div>
+                          <div class="flex items-center gap-1"><img class="h-5"src="https://img.icons8.com/dotty/80/hachiko.png" alt="hachiko" />
+                                <p class="text-start ">Breed: ${data.breed}</p></div>
+                            <div class="flex items-center gap-1"><img class="h-5"src="https://img.icons8.com/pulsar-line/48/birth-date.png" />
+                                <p class="text-start ">Birth: ${data.date_of_birth}</p></div>
+              </div>
+                           <div>
+                                      <div class="flex items-center gap-1"><img class="h-5"
+                                              src="https://img.icons8.com/dotty/80/gender.png" />
+                                          <p class="text-start ">Gender: ${data.gender}</p>
+                                      </div>
+                                      <div class="flex items-center gap-1"><img class="h-5" src="https://img.icons8.com/dotty/80/average-2.png" alt="average-2" />
+                                          <pclass="text-start ">Price: ${data.price}$</p>
+                                      </div>
+                                      <div class="flex items-center gap-1"><img class="h-5" src="https://img.icons8.com/dotty/80/average-2.png" alt="average-2" />
+                                          <pclass="text-start "> vaccinated Status: ${data.vaccinated_status}</p>
+                                      </div>
+                           </div>
+            </div>
+   </div>
+          <h3 class ="text-xl font-bold pt-2"> Details information: </h3>
+          <p class="text-xs gray-font">${data.pet_details}</p>
+</div>
+
+
+`;
+  petcontainer.append(div);
+
+  const motal = document.getElementById("Modalbtn");
+  motal.click();
+  console.log(data);
+};
+//--------------------------------add to card a pet
+const addpet = (data)  => {
+console.log(data);
+const petscontainerToCard =document.getElementById("addpetCart")
+const pet = document.createElement("div")
+pet.classList = "p-2 rounded-xl"
+pet.innerHTML =`
+<img class="rounded-xl object-cover " src="${data}" alt="">
 `
-petcontainer.append(div)
+petscontainerToCard.append(pet)
+}
 
-const motal = document.getElementById('Modalbtn')
-motal.click();
-    console.log(data);
-  }
-
-  //  pet API by id
+//  pet API by id
 const petsById = async (id) => {
   try {
-    alert(id)
-    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/pet/${id}`
+    );
     const data = await res.json();
-   pet(data.petData);
+    pet(data.petData);
+    
   } catch (error) {
     console.error("Somthing Wrong in API for pets API by Id", error);
   }
 };
-
 
 //  display All pets
 const displayPetDetais = (data) => {
@@ -116,8 +174,7 @@ const displayPetDetais = (data) => {
                         </div>
                     </div>
                         <div class="flex justify-between border-t pt-1.5 p-2 ">
-                            <button class="btn "><img class="w-6"
-                                    src="https://img.icons8.com/stickers/100/facebook-like-skin-type-1.png"
+                            <button class="btn" onclick="addpet('${item.image}')"><img class="w-6" src="https://img.icons8.com/stickers/100/facebook-like-skin-type-1.png"
                                     alt="facebook-like-skin-type-1" /></button>
                             <button class="btn btnColor"> Adopt</button>
                             <button class="btn btnColor modalClass" onclick ="petsById('${item.petId}')">Details</button>    
