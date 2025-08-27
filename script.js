@@ -25,24 +25,11 @@ const loadPatDetails = async () => {
     console.error("Somthing Wrong in API for pat details card", error);
   }
 };
-//  pet API by id
-const petsById = async (id) => {
-  try {
-    const res = await fetch(
-      `https://openapi.programming-hero.com/api/peddy/pet/${id}`
-    );
-    const data = await res.json();
-    console.log(data.petData);
-  } catch (error) {
-    console.error("Somthing Wrong in API for pets API by Id", error);
-  }
-};
+
 //  pets API by Pets (dog , bird, cat)
 const petsCategories = async (category) => {
   try {
-    const res = await fetch(
-      `https://openapi.programming-hero.com/api/peddy/category/${category}`
-    );
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
     const data = await res.json();
     displayPetDetais(data.data);
   } catch (error) {
@@ -50,7 +37,7 @@ const petsCategories = async (category) => {
   }
 };
 
-// for click the details button
+// for click the category button
 const btnclick = (id) => {
   petsCategories(id);
 };
@@ -64,12 +51,43 @@ const displayCategories = (data) => {
     CatBtnContainer.append(CatBtn);
   });
 };
+// for click detail button
+ const pet = (data) =>{
+  
+const petcontainer = document.getElementById('modalcontainar')
+const div = document.createElement("div")
+div.innerHTML = `
+<img class = "w-3xl object-center p-2 border-2 rounded-2xl" src="${data.image}" alt="">
+<button> clse </button>
+
+`
+petcontainer.append(div)
+
+const motal = document.getElementById('Modalbtn')
+motal.click();
+    console.log(data);
+  }
+
+  //  pet API by id
+const petsById = async (id) => {
+  try {
+    alert(id)
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+    const data = await res.json();
+   pet(data.petData);
+  } catch (error) {
+    console.error("Somthing Wrong in API for pets API by Id", error);
+  }
+};
+
 
 //  display All pets
 const displayPetDetais = (data) => {
   const petscontainer = document.getElementById("PetsDisplay");
   petscontainer.innerHTML = "";
   data.forEach((item) => {
+    console.log(item);
+
     const petCard = document.createElement("div");
     petCard.innerHTML = `
        <div class="card p-1 pt-4 mb-4 border shadow-sm">
@@ -102,7 +120,7 @@ const displayPetDetais = (data) => {
                                     src="https://img.icons8.com/stickers/100/facebook-like-skin-type-1.png"
                                     alt="facebook-like-skin-type-1" /></button>
                             <button class="btn btnColor"> Adopt</button>
-                            <button class="btn btnColor">Details</button>
+                            <button class="btn btnColor modalClass" onclick ="petsById('${item.petId}')">Details</button>    
                         </div>
                 </div>
       `;
