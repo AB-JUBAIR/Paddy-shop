@@ -4,8 +4,7 @@ console.log("js is conneceted");
 const loadCategories = async () => {
   try {
     const res = await fetch(
-      "https://openapi.programming-hero.com/api/peddy/categories"
-    );
+      "https://openapi.programming-hero.com/api/peddy/categories");
     const data = await res.json();
     displayCategories(data.categories);
   } catch (error) {
@@ -13,31 +12,56 @@ const loadCategories = async () => {
   }
 };
 
-// load api for pet detail card
+// load api for pet card
 const loadPatDetails = async () => {
   try {
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
     const data = await res.json();
-    displayPatDetais(data.pets);
+    displayPetDetais(data.pets);
   } catch (error) {
-    console.error("Somthing Wrong in API for pat details", error);
+    console.error("Somthing Wrong in API for pat details card", error);
+  }
+};
+//  pet API by id
+const petsById = async (id) => {
+  try {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+    const data = await res.json();
+ console.log(data.petData);
+  } catch (error) {
+    console.error("Somthing Wrong in API for pets API by Id", error);
+  }
+};
+//  pets API by Pets (dog , bird, cat)
+const petsCategories = async (category) => {
+  try {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`);
+    const data = await res.json();
+ displayPetDetais(data.data);
+  } catch (error) {
+    console.error("Somthing Wrong in API for pets API by Id", error);
   }
 };
 
+// for click the details button
+const btnclick =(id) =>{
+    petsCategories(id)
+}
+
 // display categories
 const displayCategories = (data) => {
-  console.log(data);
   const CatBtnContainer = document.getElementById("categoriesBtn");
   data.forEach((item) => {
     const CatBtn = document.createElement("div");
-    CatBtn.innerHTML = `<button class="btn px-14 py-2 h-14"><img class="h-full " src="${item.category_icon}" alt=""><p class ="text-xl">${item.category} </p></button>`;
-    CatBtnContainer.append(CatBtn);
+    CatBtn.innerHTML = `<button onclick="btnclick('${item.category}')" class="btn px-14 py-2 h-14"><img class="h-full " src="${item.category_icon}" alt=""><p class ="text-xl">${item.category} </p></button>`;   
+    CatBtnContainer.append(CatBtn);    
   });
 };
 
-//  display pat detais shows
-const displayPatDetais = (data) => {
+//  display All pets
+const displayPetDetais = (data) => {
   const petscontainer = document.getElementById('PetsDisplay')
+  petscontainer.innerHTML = ""
   data.forEach((item) => {
       const petCard = document.createElement('div')
       petCard.innerHTML = `
@@ -76,7 +100,7 @@ const displayPatDetais = (data) => {
                 </div>
       `
       petscontainer.append(petCard)
-      console.log(item);
+    
   })
   
 };

@@ -11,6 +11,7 @@ you have to create private repo in our Google Classroom . here is the Link
 
 ## APIs
 
+
 The following APIs are available in Peddy:
 
 1. **Fetch All Pets**
