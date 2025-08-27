@@ -13,7 +13,7 @@ const loadCategories = async () => {
   }
 };
 
-// load api for pat detail card
+// load api for pet detail card
 const loadPatDetails = async () => {
   try {
     const res = await fetch("https://openapi.programming-hero.com/api/peddy/pets");
