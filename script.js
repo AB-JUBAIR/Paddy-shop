@@ -70,6 +70,7 @@ const displayCategories = (data) => {
 // for click detail button
 const pet = (data) => {
   const petcontainer = document.getElementById("modalcontainar");
+  petcontainer.innerHTML = "";
   const div = document.createElement("div");
   div.innerHTML = `
 <img class = "w-3xl object-center p-2 border-2 rounded-2xl" src="${data.image}" alt="">
@@ -124,7 +125,6 @@ pet.innerHTML =`
 `
 petscontainerToCard.append(pet)
 }
-
 //  pet API by id
 const petsById = async (id) => {
   try {
