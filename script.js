@@ -58,6 +58,10 @@ const btnclick = (id) => {
 } 
  */
 
+
+
+
+
 // display categories
 const displayCategories = (data) => {
   const CatBtnContainer = document.getElementById("categoriesBtn");
@@ -65,8 +69,15 @@ const displayCategories = (data) => {
     const CatBtn = document.createElement("div");
     CatBtn.innerHTML = `<button onclick="btnclick('${item.category}')" class="btn lg:px-14 md:px-8 py-2 h-14"><img class="h-full " src="${item.category_icon}" alt=""><p class ="text-xl">${item.category} </p></button>`;
     CatBtnContainer.append(CatBtn);
+    console.log(data);
+    
   });
 };
+
+
+
+
+
 // for click detail button
 const pet = (data) => {
   const petcontainer = document.getElementById("modalcontainar");
@@ -109,11 +120,14 @@ const pet = (data) => {
 
 `;
   petcontainer.append(div);
-
   const motal = document.getElementById("Modalbtn");
   motal.click();
-  console.log(data);
+
 };
+
+
+
+
 //--------------------------------add to card a pet
 const addpet = (data)  => {
 console.log(data);
@@ -125,6 +139,10 @@ pet.innerHTML =`
 `
 petscontainerToCard.append(pet)
 }
+
+
+
+
 //  pet API by id
 const petsById = async (id) => {
   try {
@@ -139,13 +157,20 @@ const petsById = async (id) => {
   }
 };
 
+
+
+
+
+
 //  display All pets
 const displayPetDetais = (data) => {
   const petscontainer = document.getElementById("PetsDisplay");
-  petscontainer.innerHTML = "";
-  data.forEach((item) => {
-    console.log(item);
-
+  petscontainer.innerHTML = ""; 
+  console.log(data);
+  if (data.length > 0 ) {
+    
+    data.forEach((item) => {
+      
     const petCard = document.createElement("div");
     petCard.innerHTML = `
        <div class="card p-1 pt-4 mb-4 border shadow-sm">
@@ -183,6 +208,22 @@ const displayPetDetais = (data) => {
       `;
     petscontainer.append(petCard);
   });
+  
+} else {
+  let count = 0;
+ if (count == 0) {
+   const NotAvailable = document.getElementById('PetsDisplay')
+  petCard =document.createElement ('div')
+      petCard.innerHTML = `
+            <div class="flex flex-col w-xs px-14 py-10 m-16 relative left-6 bg-green-200 rounded-2xl border-red-700">
+        <img src="images/error.webp" alt=""><p class="text-3xl"> Not available right now.</p>
+        </div>
+      `
+      NotAvailable.append(petCard)
+      count++;
+ }
+    }
+
 };
 
 loadCategories();

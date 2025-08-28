@@ -30,7 +30,7 @@
     </header>
 
     <!-- this is main section -->
-    <main class=" justify-items-center">
+    <main class="w-11/12 mx-auto justify-items-center">
 
         <section class="w-auto  flex flex-col  text-center">
             <div class="">
@@ -41,7 +41,7 @@
                 <p class="gray-font">It is a long established fact that a reader will be distracted by the readable
                     content of a page when
                     looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-                <button class="btn btn-bg text-white m-5"> View More</button>
+                <button class="btn btn-bg text-white m-5" id="gotBtn"> View More</button>
             </div>
             <img src="/images/pet.webp" alt="">
             <h1 class="font-black text-3xl my-5">Adopt Your Best Friend</h1>
@@ -54,11 +54,14 @@
         <section>
             <div id="categoriesBtn" class="flex flex-row gap-5 justify-center my-8"> </div>
             <div class="flex justify-between items-center py-3">
-                <p class="Lato font-bold text-2xl">Best for you</p> <button class=" btn btn-bg text-white text-xl"> Sort by price</button>
+                <p class="Lato font-bold text-2xl">Best for you</p> <button  class=" btn btn-bg text-white text-xl"> Sort by price</button>
             </div>
-            <div class="flex gap-3">
-                <div id="PetsDisplay" class=" grid gap-5 justify-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
-                <div id="addpetCart" class="w-1/4 border-2 rounded-xl ">
+            <div id="NotAvailable" class="flex gap-3 flex-row lg:flex-1/2">
+
+                <div id="PetsDisplay" class=" grid gap-5 justify-start grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+                </div> 
+                <div id="addpetCart" class="w-1/4 h-1/4 border-2 grid grid-cols-2 rounded-xl ">
                     
                 <!-- modal section  -->
                     <button id="Modalbtn" class="btn hidden" onclick="customModal.showModal()">open modal</button>
@@ -122,6 +125,14 @@
 
     </script>
     <script src="script.js"></script>
+    <script>
+          document.getElementById("gotBtn").addEventListener("click", () => {
+    document.getElementById("NotAvailable").scrollIntoView({
+      behavior: "smooth"
+    });
+  })
+    </script>
+    
 </body>
 
 </html>
